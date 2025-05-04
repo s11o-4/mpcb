@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mpcb
-          image: s11o/mpcb:0.0.0
+          image: s11o/mpcb:0.0.1
           ports:
             - containerPort: 4000
           env:

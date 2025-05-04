@@ -10,7 +10,8 @@ defmodule MyPersonalCloudBackend.Application do
     children = [
       MyPersonalCloudBackendWeb.Telemetry,
       MyPersonalCloudBackend.Repo,
-      {DNSCluster, query: Application.get_env(:my_personal_cloud_backend, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:my_personal_cloud_backend, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: MyPersonalCloudBackend.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: MyPersonalCloudBackend.Finch},
