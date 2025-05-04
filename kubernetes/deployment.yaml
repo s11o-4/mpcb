@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mpcb-backend
+  namespace: mpcb
+spec:
+  selector:
+    matchLabels:
+      app: mpcb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mpcb
+    spec:
+      containers:
+        - name: mpcb
+          image: s11o/mpcb:0.0.0
+          ports:
+            - containerPort: 4000
+          env:
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mpcb-postgres-secret
+                  key: DATABASE_USER
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mpcb-postgres-secret
+                  key: DATABASE_PASSWORD
+            - name: DATABASE_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mpcb-config
+                  key: DATABASE_HOST
+            - name: DATABASE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mpcb-config
+                  key: DATABASE_NAME
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: mpcb-config
+                  key: JWT_SECRET_KEY
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mpcb-config
+                  key: SECRET_KEY_BASE
+            - name: PHX_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: mpcb-config
+                  key: PHX_HOST
+            - name: mpcb_SETUP
+              valueFrom:
+                configMapKeyRef:
+                  name: mpcb-config
+                  key: mpcb_SETUP
+            - name: DATABASE_URL
+              value: "postgresql://$(DATABASE_USER):$(DATABASE_PASSWORD)@$(DATABASE_HOST)/$(DATABASE_NAME)"

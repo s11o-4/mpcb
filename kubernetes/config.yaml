@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mpcb-config
+  namespace: mpcb
+  labels:
+    app: mpcb-backend
+data:
+  JWT_SECRET_KEY: "OxRuUF0aaoF0KUB4TCwrilmBlwfuR/2/cV3hG8mcib93mmSA/4KAkvhXOh23ZKQj"
+  DATABASE_HOST: "10.105.66.249" 
+  DATABASE_NAME: "mpcb_database"
+  SECRET_KEY_BASE: "OxRuUF0aaoF0KUB4TCwrilmBlwfuR/2/cV3hG8mcib93mmSA/4KAkvhXOh23ZKQj"
+  PHX_HOST: "localhost"
+  mpcb_SETUP: "1"

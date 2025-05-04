@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mpcb
+  namespace: mpcb
+spec:
+  ports:
+    - name: mpcb
+      port: 4000
+      targetPort: 4000
+  selector:
+    app: mpcb
+  type: ClusterIP
