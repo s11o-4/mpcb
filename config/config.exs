@@ -36,6 +36,13 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :my_personal_cloud_backend, MyPersonalCloudBackend.PromEx,
+  disabled: false,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: :disabled,
+  metrics_server: :disabled
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 

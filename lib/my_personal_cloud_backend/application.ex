@@ -8,6 +8,7 @@ defmodule MyPersonalCloudBackend.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      MyPersonalCloudBackend.PromEx,
       MyPersonalCloudBackendWeb.Telemetry,
       MyPersonalCloudBackend.Repo,
       {DNSCluster,

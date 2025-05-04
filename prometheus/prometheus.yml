@@ -1,0 +1,7 @@
+global:
+scrape_interval: 5s 
+scrape_configs:
+- job_name: 'prometheus'
+static_configs:
+- targets: ['locahost:4000']
+- job_name: 'phoenix_app'
